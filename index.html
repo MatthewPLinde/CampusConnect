@@ -49,7 +49,7 @@
 
     .cal-container{
         width: 350px;
-        border: 1px solid #ccc;
+        border: 2px solid black;
     }
 
     .cal-header{
@@ -76,11 +76,19 @@
 
     .cal-days li{
         padding: 10px;
-        border: 1px solid black;
+        border: 2px solid black;
     }
 
     .current-day{
-        background-color: orange;
+        background-color: #91d7fe;
+    }
+
+    .cal-days li:not(.empty):hover{
+        background-color: #52a9d9;
+    }
+
+    .important-dates ul{
+        list-style-type: none;
     }
 </style>
 
@@ -119,6 +127,17 @@
                 </ul>
                 <ul class="cal-days" id="calDays">
                     <!-- Will auto load -->
+                </ul>
+            </div>
+
+            <div class="important-dates">
+                <h2>Important Dates</h2>
+                <ul>
+                    <li>August 2nd: Fun Day</li>
+                    <li>August 20th: Pajama Day</li>
+                    <li>October 8th: Exams Start</li>
+                    <li>November 9th: Exams End</li>
+                    <li>December 14th: Holliday Starts</li>
                 </ul>
             </div>
         </center>
