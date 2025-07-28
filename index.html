@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Home Page</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="style.css?v=1.0">
+    </head>
+<style>
+    /* NAV */
+    nav {
+        background-color: #91d7fe;
+        padding: 10px;
+        }
+
+    nav ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        }
+
+    nav ul li {
+        margin-right: 20px;
+        }
+
+    nav ul li a {
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        }
+
+    nav ul li a:hover {
+        text-decoration: underline;
+        }
+
+    /* BODY */
+    body {
+        margin: 0;
+        padding: 0;
+    }
+
+    /* HOME PAGE */
+    .home-page1 h1{
+        text-align: center  ;
+    }
+
+    .cal-container{
+        width: 350px;
+        border: 1px solid #ccc;
+    }
+
+    .cal-header{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        background-color: #f0f0f0;
+    }
+
+    .weekdays, .cal-days{
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        text-align: center;
+    }
+
+    .weekdays li{
+        padding: 10px;
+        font-weight: bold;
+    }
+
+    .cal-days li{
+        padding: 10px;
+        border: 1px solid black;
+    }
+
+    .current-day{
+        background-color: orange;
+    }
+</style>
+
+    <body>
+        <nav>
+            <ul>
+                <li><a href="#">Logo</a></li>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Upload</a></li>
+                <li><a href="#">Download</a></li>
+                <li><a href="#">Messaging</a></li>
+                <li><a href="#">Booking</a></li>
+                <li><a href="#">Tickets</a></li>
+            </ul>
+        </nav>
+
+        <div class="home-page1">
+            <h1>Welcome (Name)</h1>
+        </div>
+
+        <center>
+            <div class="cal-container">
+                <div class="cal-header">
+                    <button id="prevMonth">&#10094</button>
+                    <span id="monthAndYear"></span>
+                    <button id="nextMonth">&#10095</button>
+                </div>
+                <ul class="weekdays">
+                    <li>Sun</li>
+                    <li>Mon</li>
+                    <li>Tue</li>
+                    <li>Wed</li>
+                    <li>Thu</li>
+                    <li>Fri</li>
+                    <li>Sat</li>
+                </ul>
+                <ul class="cal-days" id="calDays">
+                    <!-- Will auto load -->
+                </ul>
+            </div>
+        </center>
+    </body>
+
+    <script>
+        const monthAndYear = document.getElementById('monthAndYear')
+        const calDays = document.getElementById('calDays')
+        const prevMonth = document.getElementById('prevMonth')
+        const nextMonth = document.getElementById('nextMonth')
+
+        let currentDate = new Date()
+        let currentMonth = currentDate.getMonth()
+        let currentYear = currentDate.getFullYear() 
+
+        function createCal() {
+            calDays.innerHTML = ''
+            const firstDay = new Date(currentYear, currentMonth, 1).getDay()
+            const totalDays = new Date(currentYear, currentMonth + 1, 0).getDate()
+
+            monthAndYear.textContent = `${new Date(currentYear, currentMonth).toLocaleString('default', {month: 'long'})} ${currentYear}`
+
+            for(let i = 0; i < firstDay; i++){
+                const li = document.createElement('li')
+                li.classList.add('empty')
+                calDays.appendChild(li)
+            }
+
+            for(let i = 1; i <= totalDays; i++){
+                const li = document.createElement('li')
+                li.textContent = i
+                if (i === currentDate.getDate() && currentMonth === new Date().getMonth() && currentYear === new Date().getFullYear()){
+                    li.classList.add('current-day')
+                }
+                calDays.appendChild(li)
+            }
+        }
+
+        prevMonth.addEventListener('click', () => {
+            currentMonth--
+            if(currentMonth < 0){
+                currentMonth = 11
+                currentYear--
+            }
+            createCal()
+        })
+
+        nextMonth.addEventListener('click', () => {
+            currentMonth++
+            if(currentMonth > 11){
+                currentMonth = 0
+                currentYear++
+            }
+            createCal()
+        })
+
+        createCal()
+    </script>
+</html>
