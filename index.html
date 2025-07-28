@@ -90,6 +90,27 @@
     .important-dates ul{
         list-style-type: none;
     }
+
+    table{
+        width: 100%;
+        border-collapse: collapse;
+        text-align: center;
+    }
+
+    th, td{
+        border: 1px solid black;
+        padding: 10px;
+        text-align: center;
+    }
+
+    thead{
+        background-color: #52a9d9;
+        font-weight: bold;
+    }
+
+    #timetableday{
+        font-weight: bold;
+    }
 </style>
 
     <body>
@@ -139,6 +160,63 @@
                     <li>November 9th: Exams End</li>
                     <li>December 14th: Holliday Starts</li>
                 </ul>
+            </div>
+
+            <div class="timetable">
+                <table border="1" cellspacing="0" cellpadding="8">
+                    <thead>
+                        <tr>
+                        <th>Day and Time</th>
+                        <th>8:00 - 9:00</th>
+                        <th>10:00 - 11:00</th>
+                        <th>12:00 - 13:00</th>
+                        <th>14:00 - 15:00</th>
+                        <th>16:00 - 17:00</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                        <td id="timetableday">Monday</td>
+                        <td>Programming</td>
+                        <td>Programming</td>
+                        <td>Security</td>
+                        <td>Azure</td>
+                        <td></td>
+                        </tr>
+                        <tr>
+                        <td id="timetableday">Tuesday</td>
+                        <td>Azure</td>
+                        <td>Programming</td>
+                        <td></td>
+                        <td>Security</td>
+                        <td></td>
+                        </tr>
+                        <tr>
+                        <td id="timetableday">Wednesday</td>
+                        <td></td>
+                        <td>Security</td>
+                        <td>Azure</td>
+                        <td></td>
+                        <td>Programming</td>
+                        </tr>
+                        <tr>
+                        <td id="timetableday">Thursday</td>
+                        <td>Programming</td>
+                        <td>Azure</td>
+                        <td>Azure</td>
+                        <td></td>
+                        <td></td>
+                        </tr>
+                        <tr>
+                        <td id="timetableday">Friday</td>
+                        <td>Security</td>
+                        <td></td>
+                        <td>Programming</td>
+                        <td></td>
+                        <td></td>
+                        </tr>
+                    </tbody>
+                    </table>
             </div>
         </center>
     </body>
