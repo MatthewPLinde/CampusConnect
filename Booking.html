@@ -8,96 +8,114 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="style.css">
     <style>
+        /* === Navbar === */
         nav {
-            background-color: #80bef5;
-            padding: 10px;
+          background-color: #80bef5;
+          padding: 10px;
         }
 
         nav ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+          display: flex;
+          justify-content: center;
         }
 
         nav ul li {
-            margin: 0 15px;
+          margin: 0 15px;
         }
 
         nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
+          color: white;
+          text-decoration: none;
+          font-weight: bold;
         }
 
         nav ul li a:hover {
-            text-decoration: underline;
+          text-decoration: underline;
         }
 
+        /* === Headings === */
         h1 {
-            text-align: center;
-            font-size: 40px;
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-            margin-top: 50px; /* pushes title further down */
+          text-align: center;
+          font-size: 40px;
+          font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+          margin-top: 50px; /* pushes title down from navbar */
         }
 
+        h3 {
+          font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        /* === Booking Container === */
         .booking-container {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-top: 40px; /* pushes cards further down */
-            flex-wrap: wrap; /* makes it responsive on smaller screens */
+          display: flex;
+          justify-content: center;
+          gap: 30px;
+          margin-top: 40px;
+          flex-wrap: wrap; /* makes it responsive */
         }
 
+        /* === Individual Booking Cards === */
         .booking-card {
-            background-color: #a9c9da; /* light blue background */
-            padding: 20px;
-            border-radius: 15px;
-            text-align: center;
-            width: 250px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s;
+          background-color: #a9c9da; /* light blue background */
+          padding: 20px;
+          border-radius: 15px;
+          text-align: center;
+          width: 250px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+          transition: transform 0.3s;
         }
 
         .booking-card:hover {
-            transform: scale(1.05);
+          transform: scale(1.05);
         }
 
         .booking-card h3 {
-            margin-bottom: 15px;
+          margin-bottom: 15px;
         }
 
+        /* === Image Box inside Cards === */
         .image-box {
-            background: white;
-            border-radius: 20px;
-            width: 100%;
-            height: 160px;
-            overflow: hidden; /* ensures image stays inside */
-            display: flex;
-            justify-content: center;
-            align-items: center;
+          background: white;
+          border-radius: 20px;
+          width: 100%;
+          height: 160px;
+          overflow: hidden; /* keeps image inside */
+          display: flex;
+          justify-content: center;
+          align-items: center;
         }
 
         .image-box img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* keeps image ratio */
+          width: 100%;
+          height: 100%;
+          object-fit: cover; /* keeps proper image ratio */
         }
 
-        .booking-card button {
-            margin-top: 15px;
-            padding: 10px 20px;
-            background-color: #46a6e0;
-            color: white;
-            border: none;
-            border-radius: 20px;
-            cursor: pointer;
-            transition: background-color 0.3s;
+        /* === Book Button (styled link) === */
+        .book-btn {
+          display: inline-block;
+          margin-top: 15px;
+          padding: 10px 20px;
+          background-color: #46a6e0;
+          color: white;
+          text-decoration: none; /* removes underline */
+          border-radius: 20px;
+          transition: background-color 0.3s, transform 0.2s;
         }
 
-        .booking-card button:hover {
-            background-color: #2e7ea6;
+        .book-btn:hover {
+          background-color: #2e7ea6;
+          transform: translateY(-2px); /* small lift on hover */
+        }
+
+        /* === Responsive Design for Mobile === */
+        @media (max-width: 600px) {
+          .booking-card {
+            width: 90%; /* nearly full width on small devices */
+          }
         }
     </style>
 </head>
@@ -115,31 +133,33 @@
 
     <h1>Bookings</h1>
 
+    <!-- Booking Container -->
     <div class="booking-container">
         <div class="booking-card">
-            <h3>Study Room</h3>
-            <div class="image-box">
-                <img src="study-room.jpg" alt="Study Room">
-            </div>
-            <button>Book</button>
+          <h3>Study Room</h3>
+          <div class="image-box">
+            <img src="images/study-room.jpg" alt="Study Room">
+          </div>
+          <a href="study-room.html" class="book-btn">Book</a>
         </div>
 
         <div class="booking-card">
-            <h3>Sports Ground</h3>
-            <div class="image-box">
-                <img src="sports-ground.jpg" alt="Sports Ground">
-            </div>
-            <button>Book</button>
+          <h3>Sports Ground</h3>
+          <div class="image-box">
+            <img src="images/sports-ground.jpg" alt="Sports Ground">
+          </div>
+          <a href="sports-ground.html" class="book-btn">Book</a>
         </div>
 
         <div class="booking-card">
-            <h3>Lecture Hall</h3>
-            <div class="image-box">
-                <img src="lecture-hall.jpg" alt="Lecture Hall">
-            </div>
-            <button>Book</button>
+          <h3>Lecture Hall</h3>
+          <div class="image-box">
+            <img src="images/lecture-hall.jpg" alt="Lecture Hall">
+          </div>
+          <a href="lecture-hall.html" class="book-btn">Book</a>
         </div>
     </div>
 </body>
 </html>
+
 
