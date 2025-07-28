@@ -38,6 +38,39 @@
         margin: 0;
         padding: 0;
     }
+
+    h1{
+        text-align: center;
+    }
+
+    /*UPLOAD AREA */
+    .upload-area{
+        margin: 40px auto;
+        width: 80%;
+        max-width: 600px;
+        padding: 40px;
+        border: 3px dashed black;
+        border-radius: 10px;
+        text-align: center;
+        color: #000;
+        transition: background-color 0.3s ease;
+    }
+
+    .upload-area.dragover{
+        background-color: #91d7fe;
+        border-color: #52a9d9;
+    }
+
+    #uploadbtn{
+        background-color: #91d7fe;
+        width: 100px;
+        height: 30px;
+        border-radius: 10px;
+    }
+
+    #uploadbtn:hover{
+        background-color: #52a9d9;
+    }
 </style>
 
 <body>
@@ -53,5 +86,43 @@
         </ul>
     </nav>
     
+    <h1>Upload</h1>
+
+    <div class="upload-area" id="upload-area">
+        <p>Drag & drop your files here or click to upload</p>
+        <input type="file" id="file-input" multiple style="display: none;">
+    </div>
+
+    <center><button id="uploadbtn">Submit</button></center>
 </body>
+<script>
+    const uploadArea = document.getElementById('upload-area')
+    const fileInput = document.getElementById('file-input')
+
+    uploadArea.addEventListener('click', () => fileInput.click())
+    
+    uploadArea.addEventListener('dragover', (e) => {
+        e.preventDefault()
+        uploadArea.classList.add('dragover')
+    })
+
+    uploadArea.addEventListener('dragleave', (e) => {
+        uploadArea.classList.remove('dragover')
+    })
+
+    uploadArea.addEventListener('drop', (e) => {
+        const files = e.dataTransfer.files
+        handleFiles(fileInput)
+    })
+
+    fileInput.addEventListener('change', () => {
+        handleFiles(fileInput.files)
+    })
+
+    function handleFiles(files){
+        for(const file of files){
+            alert(`File dropped: ${file.name}`)
+        }
+    }
+</script>
 </html>
