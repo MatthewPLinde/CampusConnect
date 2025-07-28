@@ -3,123 +3,155 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Study Room Booking</title>
     
     <style>
-         body{  background-color: #6d95a9; /* light sky blue */}
+        body {
+          background-color: #6d95a9; 
+          font-family: Arial, sans-serif;
+          margin: 0;
+          padding: 0;
+        }
 
-          /* === Navbar === */
+        /* === Navbar === */
         nav {
-          background-color: #80bef5;
-          padding: 10px;
+          background: linear-gradient(90deg, #80bef5, #5fa6d6);
+          padding: 12px 30px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+          position: sticky;
+          top: 0;
+          z-index: 1000;
+        }
+
+        .logo {
+          height: 45px;
+          border-radius: 8px;
         }
 
         nav ul {
-          list-style-type: none;
+          list-style: none;
           margin: 0;
           padding: 0;
           display: flex;
-          justify-content: center;
-        }
-
-        nav ul li {
-          margin: 0 15px;
+          gap: 20px;
         }
 
         nav ul li a {
           color: white;
           text-decoration: none;
           font-weight: bold;
+          padding: 10px 18px;
+          border-radius: 20px;
+          transition: all 0.3s ease;
+          background: rgba(255, 255, 255, 0.15);
         }
 
         nav ul li a:hover {
-          text-decoration: underline;
+          background: white;
+          color: #2e7ea6;
+          transform: translateY(-2px);
+          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
         }
 
- h2 { margin-top: 40px;
-      text-align: center;
-      color: #333;
-      font-size: 30px;
-    }
-    form {
-      max-width: 500px;
-      margin: auto;
-      background: #ffffff;
-      padding: 20px;
-      border-radius: 15px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      margin-top: 80px; 
-    }
-    label {
-      font-weight: bold;
-      display: block;
-      margin-top: 15px;
-    }
-    input, select, textarea {
-      width: 100%;
-      padding: 10px;
-      margin-top: 5px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-    }
-    button {
-      margin-top: 20px;
-      width: 100%;
-      padding: 12px;
-      background-color: #46a6e0;
-      border: none;
-      color: white;
-      font-size: 16px;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #2e7ea6;
-    }
+        nav ul li a.active {
+          background: white;
+          color: #2e7ea6;
+        }
+
+        /* === Page Heading === */
+        h2 { 
+          margin-top: 40px;
+          text-align: center;
+          color: white;
+          font-size: 30px;
+        }
+
+        /* === Booking Form === */
+        form {
+          max-width: 500px;
+          margin: 40px auto;
+          background: #ffffff;
+          padding: 20px;
+          border-radius: 15px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        label {
+          font-weight: bold;
+          display: block;
+          margin-top: 15px;
+        }
+
+        input, select, textarea {
+          width: 100%;
+          padding: 10px;
+          margin-top: 5px;
+          border: 1px solid #ccc;
+          border-radius: 8px;
+        }
+
+        button {
+          margin-top: 20px;
+          width: 100%;
+          padding: 12px;
+          background-color: #46a6e0;
+          border: none;
+          color: white;
+          font-size: 16px;
+          border-radius: 8px;
+          cursor: pointer;
+          transition: background-color 0.3s;
+        }
+
+        button:hover {
+          background-color: #2e7ea6;
+        }
     </style>
 
 </head>
 <body>
- <nav>
+    <nav>
+        <img src="images/logo.png" alt="Logo" class="logo">
         <ul>
             <li><a href="#">Home</a></li>
             <li><a href="#">Upload</a></li>
             <li><a href="#">Download</a></li>
             <li><a href="#">Messaging</a></li>
-            <li><a href="#">Booking</a></li>
+            <li><a href="#" class="active">Booking</a></li>
             <li><a href="#">Tickets</a></li>
         </ul>
     </nav>
 
-<h2>Book a Study Room</h2>
-  <form action="submit-booking.php" method="post">
-    <label for="name">Full Name</label>
-    <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+    <h2>Book a Study Room</h2>
+    <form action="submit-booking.php" method="post">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" placeholder="Enter your full name" required>
 
-    <label for="email">Email Address</label>
-    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required>
 
-    <label for="date">Booking Date</label>
-    <input type="date" id="date" name="date" required>
+        <label for="date">Booking Date</label>
+        <input type="date" id="date" name="date" required>
 
-    <label for="time">Booking Time</label>
-    <input type="time" id="time" name="time" required>
+        <label for="time">Booking Time</label>
+        <input type="time" id="time" name="time" required>
 
-    <label for="duration">Duration (hours)</label>
-    <select id="duration" name="duration">
-      <option value="1">1 Hour</option>
-      <option value="2">2 Hours</option>
-      <option value="3">3 Hours</option>
-      <option value="4">4 Hours</option>
-    </select>
+        <label for="duration">Duration (hours)</label>
+        <select id="duration" name="duration">
+          <option value="1">1 Hour</option>
+          <option value="2">2 Hours</option>
+          <option value="3">3 Hours</option>
+          <option value="4">4 Hours</option>
+        </select>
 
-    <label for="notes">Additional Notes</label>
-    <textarea id="notes" name="notes" rows="4" placeholder="Any special requirements?"></textarea>
+        <label for="notes">Additional Notes</label>
+        <textarea id="notes" name="notes" rows="4" placeholder="Any special requirements?"></textarea>
 
-    <button type="submit">Submit Booking</button>
-  </form>
-
-
-    
+        <button type="submit">Submit Booking</button>
+    </form>
 </body>
 </html>
+
