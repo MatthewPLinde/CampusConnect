@@ -1,1 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Academic record</title>
+  <style>
+    body {
+      background-color: #bccad7;
+      font-family: "Inter", sans-serif;
+      margin: 0;
+    }
 
+    /* === Navbar === */
+    nav {
+      background: linear-gradient(90deg, #80bef5, #5fa6d6);
+      padding: 12px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      height: 45px;
+      border-radius: 8px;
+    }
+
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: 20px;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 10px 18px;
+      border-radius: 20px;
+      transition: all 0.3s ease;
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    nav ul li a:hover {
+      background: white;
+      color: #2e7ea6;
+      transform: translateY(-2px);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    nav ul li a.active {
+      background: white;
+      color: #2e7ea6;
+    }
+
+    /* === Hamburger === */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
+
+    .hamburger div {
+      width: 28px;
+      height: 3px;
+      background-color: white;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+    }
+
+    @media(max-width: 768px) {
+      nav ul {
+        display: none;
+        position: absolute;
+        top: 60px;
+        right: 30px;
+        background: #5fa6d6;
+        flex-direction: column;
+        gap: 15px;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      }
+
+      nav ul.active {
+        display: flex;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+    }
+
+    /* === Table === */
+    .curriculum {
+      width: 100%;
+      max-width: 900px;
+      margin: 80px auto;
+      border-collapse: collapse;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    .curriculum td {
+      text-align: center;
+      border: 1px solid rgba(104, 104, 104, 0.6);
+    }
+
+    .curriculum-sem td {
+      background-color: #bccad7;
+      color: #fff;
+      padding: 10px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .table-header td {
+      background-color: #e2e2e2;
+      padding: 7px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .course-details td {
+      font-size: 12px;
+      padding: 7px;
+      color: #333;
+    }
+
+    .passed {
+      background-color: rgb(166, 201, 214);
+    }
+
+    .in-progress {
+      background-color: rgb(76, 126, 133);
+      color: white;
+      font-weight: bold;
+    }
+
+    @media(max-width: 767px) {
+      .table-wrapper {
+        overflow-x: scroll;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <img src="images/logo.png" alt="Logo" class="logo">
+
+    <!-- Hamburger -->
+    <div class="hamburger" onclick="toggleMenu()">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+
+    <!-- Navigation Links -->
+    <ul id="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="Upload.html">Upload</a></li>
+      <li><a href="Download.html">Download</a></li>
+      <li><a href="message.html">Messaging</a></li>
+      <li><a href="Booking.html" class="active">Booking</a></li>
+      <li><a href="Tickets.html">Tickets</a></li>
+    </ul>
+  </nav>
+
+  <div class="table-wrapper">
+    <table class="curriculum">
+      <tbody>
+        <!-- Your full table content -->
+        <!-- 1st year first semester grade -->
+        <tr class="curriculum-sem">
+          <td colspan="7">First Year, First Semester</td>
+        </tr>
+        <tr class="table-header">
+          <td>Course</td><td>Description</td><td>Unit</td>
+          <td>Grade</td><td>Remarks</td><td>Course</td><td>Term</td>
+        </tr>
+        <tr class="course-details passed">
+          <td>NSTP01</td><td>Civic Welfare Training Service 1</td>
+          <td>3.0</td><td>1.0</td><td>Passed</td>
+          <td>NSTP01</td><td>First Semester A.Y 2023-2024</td>
+        </tr>
+        <!-- keep ALL the rest of your rows exactly as in your original code -->
+        <!-- ... -->
+        <tr class="curriculum-sem">
+          <td colspan="7">Fourth Year, Second Semester</td>
+        </tr>
+        <tr class="table-header">
+          <td>Course</td><td>Description</td><td>Unit</td>
+          <td>Grade</td><td>Remarks</td><td>Course</td><td>Term</td>
+        </tr>
+        <tr class="course-details">
+          <td>PHIHIS</td><td>Readings in Philippine History</td>
+          <td>3.0</td><td></td><td></td><td></td><td></td>
+        </tr>
+        <!-- table end -->
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById("nav-links").classList.toggle("active");
+    }
+  </script>
+</body>
+</html>
