@@ -116,14 +116,14 @@
 }
 
     .upload-area.dragover{
-        background-color: #91d7fe;
+        background-color: #4bd3da;
         border-color: #52a9d9;
     }
 
     /* Submit */
     #uploadbtn{
-        background-color: #91d7fe;
-        color: white;
+        background-color: white;
+        color: #4bd3da;
         border: none;
         border-radius: 30px;
         font-size: 16px;
@@ -131,16 +131,15 @@
         padding: 10px 25px;
         transform: translateY(0);
         transition: transform 0.3s ease;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.2);
     }
 
     #uploadbtn:hover{
-        background-color: #52a9d9;
-        transform: translateY(-3px);
+            background-color: #4bd3da;
+            transform: translateY(-2px);
+            color: white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
-
-    #uploadbtn:hover {
-    background-color: #005ec4;
-}
 
     /* === Mobile Responsive === */
     @media (max-width: 600px) {
@@ -173,8 +172,8 @@
     <nav>
         <img src="logo.png" alt="Logo" class="logo">
         <ul>
-            <li><a href="index.html" class="active">Home</a></li>
-            <li><a href="Upload.html">Upload</a></li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="Upload.html" class="active">Upload</a></li>
             <li><a href="Download.html">Download</a></li>
             <li><a href="message.html">Messaging</a></li>
             <li><a href="Booking.html">Booking</a></li>
