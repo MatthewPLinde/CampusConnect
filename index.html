@@ -29,10 +29,14 @@
         position: sticky;
         top: 0;
         z-index: 1000;
+        height: 55px;
+        overflow: hidden;
     }
 
     .logo {
         height: 45px;
+        transform: scale(2);
+        transform-origin: left center;
         border-radius: 8px;
     }
 
@@ -75,7 +79,7 @@
     /* Main Content */
     .cal-container{
         max-width: 400px;
-        border-radius: 10px;
+        border-radius: 12px;
         overflow: hidden;
         background-color: white;
         box-shadow: 0 4px 10px rgba(0,0,0,0.1);
@@ -109,7 +113,7 @@
     }
 
     .cal-header button:hover{
-        color: #52a9d9;
+        color: #4bd3da;
         scale: 1.2;
     }
 
@@ -132,7 +136,7 @@
 
     .cal-days li{
         padding: 10px;
-        border-radius: 10px;
+        border-radius: 12px;
         margin: 2px;
         transition: background-color 0.3s;
         cursor: pointer;
@@ -154,7 +158,7 @@
         margin: 30px auto;
         background-color: white;
         padding: 20px;
-        border-radius: 10px;
+        border-radius: 12px;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         transform: translateY(0);
         transition: transform 0.3s ease;
@@ -182,7 +186,8 @@
         margin: 30px auto;
         overflow-x: auto;
         background-color: white;
-        border-radius: 10px;
+        border: 2px solid black;
+        border-radius: 12px;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         transform: translateY(0);
         transition: transform 0.3s ease;
@@ -220,7 +225,7 @@
         margin: 30px auto;
         background: white;
         padding: 20px;
-        border-radius: 10px;
+        border-radius: 12px;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         transform: translateY(0);
         transition: transform 0.3s ease;
@@ -228,11 +233,41 @@
     .map:hover, .tutorial:hover{
         transform: translateY(-10px);
     }
+
+    #play-button{
+        border-radius: 100%;
+    }
+
+    #play-button:hover{
+        cursor: pointer;
+    }
+
+    .zoom-container{
+        width: 100%;
+        max-width: 700px;
+        height: 500px;
+        overflow: hidden;
+        position: relative;
+        border-radius: 12px;
+        cursor: grab;
+    }
+
+    .zoomable-map{
+        width: 100%;
+        height: auto;
+        transform-origin: center center;
+        transition: transform 0.2s ease;
+        user-select: none;
+        pointer-events: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
 </style>
 
     <body>
     <nav>
-        <img src="images/logo.png" alt="Logo" class="logo">
+        <img src="logo.png" alt="Logo" class="logo">
         <ul>
             <li><a href="index.html" class="active">Home</a></li>
             <li><a href="Upload.html">Upload</a></li>
@@ -339,12 +374,14 @@
 
             <div class="map">
                 <h2>Map</h2>
-                <img src="campus-map.jpg" alt="Map of the school">
+                <div class="zoom-container">
+                    <img class="zoomable-map"  src="schoolmap.jpg" alt="Map of the school">
+                </div>
             </div>
 
             <div class="tutorial">
                 <h2>Tutorial</h2>
-                <img src="play.png" alt="Video Tutorial">
+                <img id="play-button" src="play.png" alt="Video Tutorial">
             </div>
         </center>
     </body>
@@ -401,5 +438,50 @@
         })
 
         createCal()
+
+
+        const container = document.querySelector('.zoom-container');
+        const mapImage = document.querySelector('.zoomable-map');
+
+        let scale = 1;
+        let originX = 0;
+        let originY = 0;
+        let isDragging = false;
+        let startX, startY;
+
+        container.addEventListener('wheel', function (e) {
+            e.preventDefault();
+            const delta = e.deltaY < 0 ? 0.1 : -0.1;
+            scale = Math.min(Math.max(1, scale + delta), 3); // Clamp between 1x and 3x zoom
+            mapImage.style.transform = `scale(${scale}) translate(${originX}px, ${originY}px)`;
+        });
+
+        container.addEventListener('mousedown', function (e) {
+            isDragging = true;
+            startX = e.clientX;
+            startY = e.clientY;
+            container.style.cursor = 'grabbing';
+        });
+
+        container.addEventListener('mouseup', function () {
+            isDragging = false;
+            container.style.cursor = 'grab';
+        });
+
+        container.addEventListener('mouseleave', function () {
+            isDragging = false;
+            container.style.cursor = 'grab';
+        });
+
+        container.addEventListener('mousemove', function (e) {
+            if (!isDragging) return;
+            const dx = (e.clientX - startX) / scale;
+            const dy = (e.clientY - startY) / scale;
+            originX += dx;
+            originY += dy;
+            startX = e.clientX;
+            startY = e.clientY;
+            mapImage.style.transform = `scale(${scale}) translate(${originX}px, ${originY}px)`;
+        });
     </script>
 </html>
