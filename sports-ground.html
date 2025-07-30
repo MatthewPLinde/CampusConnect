@@ -3,8 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <title>Sports Ground Booking</title>
     <style>
+        .fade-in{
+        opacity: 0;
+        animation: fadeIn 0.8s ease-in forwards;
+    }
+
+    @keyframes fadeIn {
+        to {
+            opacity: 1;
+        }
+    }
+
         body {
         margin: 0;
         font-family: Arial, sans-serif;
@@ -70,7 +82,7 @@
     }
 
         /* === Page Heading === */
-        h2 { 
+        h2 {
           margin-top: 40px;
           text-align: center;
           color: white;
@@ -105,26 +117,29 @@
           margin-top: 20px;
           width: 100%;
           padding: 12px;
-          background-color: #46a6e0;
+          background-color: white;
+          color: #4bd3da;
           border: none;
-          color: white;
           font-size: 16px;
           border-radius: 8px;
           cursor: pointer;
           transition: background-color 0.3s;
+          box-shadow: 0 2px 8px rgba(0,0,0,0.2);
         }
 
         button:hover {
-          background-color: #2e7ea6;
+            background-color: #4bd3da;
+            transform: translateY(-2px);
+            color: white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
         }
     </style>
-
 </head>
-<body>
+<body class="fade-in">
     <nav>
         <img src="logo.png" alt="Logo" class="logo">
         <ul>
-            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="index.html">Home</a></li>
             <li><a href="Upload.html">Upload</a></li>
             <li><a href="Download.html">Download</a></li>
             <li><a href="message.html">Messaging</a></li>
@@ -134,7 +149,8 @@
         </ul>
     </nav>
 
-    <h2>Book the Sports Ground</h2>
+    <h2>Book a Sports Ground</h2>
+
     <form action="submit-booking.php" method="post">
         <label for="name">Full Name</label>
         <input type="text" id="name" name="name" placeholder="Enter your full name" required>
@@ -150,10 +166,10 @@
 
         <label for="duration">Duration (hours)</label>
         <select id="duration" name="duration">
-          <option value="1">1 Hour</option>
-          <option value="2">2 Hours</option>
-          <option value="3">3 Hours</option>
-          <option value="4">4 Hours</option>
+            <option value="1">1 Hour</option>
+            <option value="2">2 Hours</option>
+            <option value="3">3 Hours</option>
+            <option value="4">4 Hours</option>
         </select>
 
         <label for="notes">Additional Notes</label>
