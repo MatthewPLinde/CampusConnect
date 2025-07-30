@@ -7,12 +7,6 @@
     <title>Upload</title>
 </head>
 <style>
-    body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        background-color: #6d95a9;
-    }
-
     .fade-in{
         opacity: 0;
         animation: fadeIn 0.8s ease-in forwards;
@@ -25,8 +19,15 @@
     }
 
     /* === Navbar === */
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-color: #8fcbd8;
+    }
+
+    /* === Navbar === */
     nav {
-        background: linear-gradient(90deg, #80bef5, #5fa6d6);
+        background: linear-gradient(90deg, #5bdee5, #5bdee5);
         padding: 12px 30px;
         display: flex;
         align-items: center;
@@ -35,10 +36,14 @@
         position: sticky;
         top: 0;
         z-index: 1000;
+        height: 55px;
+        overflow: hidden;
     }
 
     .logo {
         height: 45px;
+        transform: scale(2);
+        transform-origin: left center;
         border-radius: 8px;
     }
 
@@ -62,10 +67,10 @@
 
     nav ul li a:hover,
     nav ul li a.active {
-        background-color: white;
-        color: #007BFF;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-    }
+    background-color: white;
+    color: #4bd3da;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
 
     /* === Headings === */
     h1 {
