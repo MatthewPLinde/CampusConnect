@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-    <title>Upload</title>
+    <title>Tickets</title>
 </head>
 <style>
 /* NAV */
@@ -113,40 +113,45 @@
         display: block;
         width: 100%;
         padding: 14px;
-        background-color: #91d7fe;
-        color: white;
+        background-color: white;
+        color: #4bd3da;
         font-size: 16px;
         border: none;
         border-radius: 30px;
         cursor: pointer;
         transition: background-color 0.3s, transform 0.2s ease;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.2);
     }
 
     .form-container button:hover{
-        background-color: #52a9d9;
+        background-color: #4bd3da;
+          transform: translateY(-2px);
+          color: white;
+          box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
     
     .form-container button:active{
         transform: scale(0.98);
-    }
+    }   
 </style>
 
 <body>
     <nav>
         <img src="logo.png" alt="Logo" class="logo">
         <ul>
-            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="index.html">Home</a></li>
             <li><a href="Upload.html">Upload</a></li>
             <li><a href="Download.html">Download</a></li>
             <li><a href="message.html">Messaging</a></li>
             <li><a href="Booking.html">Booking</a></li>
-            <li><a href="Tickets.html">Tickets</a></li>
+            <li><a href="Tickets.html" class="active">Tickets</a></li>
             <li><a href="Academic-record.html">Academic </a></li>
         </ul>
     </nav>
 
+    <h1>Submit a Ticket</h1>
+
     <div class="form-container">
-        <h1>Submit a Ticket</h1>
         <form action="" method="post">
             <label for="student_id">Student ID:</label>
             <input type="text" name="student_id" id="student_id">
