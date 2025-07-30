@@ -98,15 +98,20 @@
         }
 
         button {
-            background-color: #46a6e0;
-            color: white;
+            background-color: white;
+            color: #4bd3da;
             border: none;
             cursor: pointer;
             font-weight: bold;
+            transition: background-color 0.3s, transform 0.2s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2)
         }
 
         button:hover {
-            background-color: #2e7ea6;
+            background-color: #4bd3da;
+            transform: translateY(-2px);
+            color: white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
 
         /* === Messages List === */
@@ -160,10 +165,10 @@
     <nav>
         <img src="logo.png" alt="Logo" class="logo">
         <ul>
-            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="index.html">Home</a></li>
             <li><a href="Upload.html">Upload</a></li>
             <li><a href="Download.html">Download</a></li>
-            <li><a href="message.html">Messaging</a></li>
+            <li><a href="message.html" class="active">Messaging</a></li>
             <li><a href="Booking.html">Booking</a></li>
             <li><a href="Tickets.html">Tickets</a></li>
             <li><a href="Academic-record.html">Academic </a></li>
